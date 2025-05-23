@@ -45,9 +45,9 @@ function addon_onAddonCommand(command, ...)
 
     local args = {...}
 
-    -- Run the following command to view sample color indexes:
-    --  //sample colortest
-    if command == 'colortest' then
-        colorTest()
+    if command and CommandHandlers[command] then
+        CommandHandlers[command]()
+    else
+        writeColoredMessage(ChatColors.red, 'Unknown command: %s':format(command or 'nil'))
     end
 end
