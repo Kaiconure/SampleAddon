@@ -43,10 +43,8 @@ function addon_onAddonCommand(command, ...)
     -- An event handler for when the addon receives a command
     --
 
-    local args = {...}
-
     if command and CommandHandlers[command] then
-        CommandHandlers[command]()
+        CommandHandlers[command](...)
     else
         writeColoredMessage(ChatColors.red, 'Unknown command: %s':format(command or 'nil'))
     end
